@@ -1,5 +1,5 @@
 global using RPG_game_dotnet.Models;
-using RPG_game_dotnet.Services.CharacterService;
+global using RPG_game_dotnet.Services.CharacterService;
 
 var builder = WebApplication.CreateBuilder(args);
 

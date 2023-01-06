@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace RPG_game_dotnet.Services.CharacterService
 {
     public class CharacterService : ICharacterService
@@ -12,20 +7,27 @@ namespace RPG_game_dotnet.Services.CharacterService
             new Character(),
             new Character{Id = 1, Name = "Sam"}
         };
-        public List<Character> AddCharacter(Character character)
+        public async Task<ServiceResponse<List<Character>>> AddCharacter(Character character)
         {
+            var serviceResponse = new ServiceResponse<List<Character>>();
             characters.Add(character);
-            return characters;
+            serviceResponse.Data = characters;
+            return serviceResponse;
         }
 
-        public List<Character> GetAllCharacters()
+        public async Task<ServiceResponse<List<Character>>> GetAllCharacters()
         {
-            return characters;
+            var serviceResponse = new ServiceResponse<List<Character>>();
+            serviceResponse.Data = characters;
+            return serviceResponse;
         }
 
-        public Character GetCharacterById(int id)
+        public async Task<ServiceResponse<Character>> GetCharacterById(int id)
         {
-            return characters.FirstOrDefault(c=>c.Id == id);
+            var serviceResponse = new ServiceResponse<Character>();
+            var character = characters.FirstOrDefault(c=>c.Id == id);
+            serviceResponse.Data = character;
+            return serviceResponse;
         }
     }
 }
