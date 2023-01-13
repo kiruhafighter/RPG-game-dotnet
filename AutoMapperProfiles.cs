@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using RPG_game_dotnet.Dtos.Weapon;
 
 namespace RPG_game_dotnet
 {
@@ -12,6 +13,7 @@ namespace RPG_game_dotnet
             CreateMap<Character, GetCharacterDto>().ReverseMap();
             CreateMap<Character, AddCharacterDto>().ReverseMap();
             CreateMap<Character, UpdateCharacterDto>().ReverseMap();
+            CreateMap<Weapon, GetWeaponDto>().ReverseMap();
         }
     }
 }
