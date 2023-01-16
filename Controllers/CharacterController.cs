@@ -57,5 +57,12 @@ namespace RPG_game_dotnet.Controllers
             }
             return Ok(response);
         }
+
+        [HttpPost("Skill")]
+        [ProducesResponseType(200, Type = typeof(ServiceResponse<GetCharacterDto>))]
+        public async Task<IActionResult> AddCharacterSkill(AddCharacterSkillDto newCharacterSkill)
+        {
+            return Ok(await _characterService.AddCharacterSkill(newCharacterSkill));
+        }
     }
 }

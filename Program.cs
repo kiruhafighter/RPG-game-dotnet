@@ -1,7 +1,9 @@
 global using Microsoft.EntityFrameworkCore;
 global using RPG_game_dotnet.Models;
 global using RPG_game_dotnet.Services.CharacterService;
+global using RPG_game_dotnet.Services.SkillService;
 global using RPG_game_dotnet.Dtos.Character;
+global using RPG_game_dotnet.Dtos.Skill;
 global using RPG_game_dotnet.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -31,6 +33,7 @@ builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddScoped<ICharacterService, CharacterService>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IWeaponService, WeaponService>();
+builder.Services.AddScoped<ISkillService, SkillService>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options => 
     {

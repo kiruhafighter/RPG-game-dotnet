@@ -46,6 +46,7 @@ namespace RPG_game_dotnet.Services.WeaponService
                 _context.Weapons.Add(weapon);
                 await _context.SaveChangesAsync();
                 response.Message = "Weapon added successfully";
+                character.Weapon = weapon;
                 response.Data = _mapper.Map<GetCharacterDto>(character);
             }
             catch(Exception ex)
