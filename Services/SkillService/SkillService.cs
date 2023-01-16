@@ -9,9 +9,10 @@ namespace RPG_game_dotnet.Services.SkillService
     {
         private readonly DataContext _context;
         private readonly IMapper _mapper;
-        public SkillService(DataContext context)
+        public SkillService(DataContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         private async Task<bool> SkillExists(int id)
@@ -120,7 +121,7 @@ namespace RPG_game_dotnet.Services.SkillService
                     throw new Exception($"Skill with id {id} not found");
                 }
                 var skill = await _context.Skills.FirstOrDefaultAsync(s=>s.Id == id);
-                _context.Skills.Remove(skill);
+                _context.Skills.Remove(skill!);
                 await _context.SaveChangesAsync();
 
                 var skills = await _context.Skills.ToListAsync();
