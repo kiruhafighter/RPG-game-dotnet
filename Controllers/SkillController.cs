@@ -28,7 +28,8 @@ namespace RPG_game_dotnet.Controllers
         public async Task<IActionResult> GetSingle(int id)
         {
             var response = await _skillService.GetById(id);
-            if(response.Data == null){
+            if(response.Data == null)
+            {
                 return NotFound(response);
             }
             return Ok(response);

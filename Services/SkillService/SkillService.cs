@@ -89,7 +89,7 @@ namespace RPG_game_dotnet.Services.SkillService
                 }
 
                 var skill = await _context.Skills.FirstOrDefaultAsync(s=>s.Id == skillId);
-                skill.Name = updSkill.Name;
+                skill!.Name = updSkill.Name;
                 skill.Damage = updSkill.Damage;
                 skill.Id = skillId;
                 _context.Skills.Update(skill);
@@ -111,7 +111,7 @@ namespace RPG_game_dotnet.Services.SkillService
             var response = new ServiceResponse<List<GetSkillDto>>();
             try
             {
-                if(id == null || id < 0)
+                if(id < 0)
                 {
                     throw new Exception("Id value is wrong");
                 }
@@ -120,6 +120,7 @@ namespace RPG_game_dotnet.Services.SkillService
                 {
                     throw new Exception($"Skill with id {id} not found");
                 }
+
                 var skill = await _context.Skills.FirstOrDefaultAsync(s=>s.Id == id);
                 _context.Skills.Remove(skill!);
                 await _context.SaveChangesAsync();

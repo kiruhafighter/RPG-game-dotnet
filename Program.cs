@@ -5,11 +5,13 @@ global using RPG_game_dotnet.Services.SkillService;
 global using RPG_game_dotnet.Dtos.Character;
 global using RPG_game_dotnet.Dtos.Skill;
 global using RPG_game_dotnet.Data;
+global using RPG_game_dotnet.Services.FightService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Filters;
 using Microsoft.OpenApi.Models;
 using RPG_game_dotnet.Services.WeaponService;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +36,7 @@ builder.Services.AddScoped<ICharacterService, CharacterService>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IWeaponService, WeaponService>();
 builder.Services.AddScoped<ISkillService, SkillService>();
+builder.Services.AddScoped<IFightService, FightService>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options => 
     {
