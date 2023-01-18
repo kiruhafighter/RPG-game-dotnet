@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using RPG_game_dotnet.Dtos.Weapon;
 using RPG_game_dotnet.Dtos.Skill;
+using RPG_game_dotnet.Dtos.Fight;
 
 namespace RPG_game_dotnet
 {
@@ -18,6 +19,7 @@ namespace RPG_game_dotnet
             CreateMap<Skill, GetSkillDto>().ReverseMap();
             CreateMap<Skill, GetSkillShortDto>().ReverseMap();
             CreateMap<Skill, AddSkillDto>().ReverseMap();
+            CreateMap<Character, HighScoreDto>();
         }
     }
 }
